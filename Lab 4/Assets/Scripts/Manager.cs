@@ -9,11 +9,11 @@ public class Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//int count = 0;
-		//while (count < 2) {
-			prey = Instantiate (preyPrefab) as Prey;
-		//	count = count + 1;
-		//}
+		int count = 0;
+		while (count < 10) {
+		prey = Instantiate (preyPrefab) as Prey;
+			count = count + 1;
+		}
 
 	}
 	

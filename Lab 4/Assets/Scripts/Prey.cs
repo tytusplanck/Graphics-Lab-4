@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Prey : MonoBehaviour {
 
-	public GameObject prey;
-	Rigidbody rb;
+	private Vector3 velocity;
 	// Use this for initialization
 	void Start () {
-		rb = prey.GetComponent<Rigidbody> ();
-		prey.transform.parent = transform;
-		prey.transform.localPosition = new Vector3(Random.Range(0, 100), 0, 0);
-		rb.AddForce (100, 0, 0);
+		transform.parent = transform;
+		transform.localPosition = new Vector3(Random.Range(0, 0), 0, 0);
+		velocity = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		transform.localPosition = transform.localPosition + velocity;
 	}
 }
