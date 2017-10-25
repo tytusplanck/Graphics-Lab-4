@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: b3ff2f2ea65d149f08f60db84b83058e
+timeCreated: 1508937408
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - prey: {fileID: 1233217426763030, guid: b056fd7d919374504b48fa34363af37f, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
