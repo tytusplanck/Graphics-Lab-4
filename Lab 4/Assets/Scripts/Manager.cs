@@ -18,7 +18,7 @@ public class Manager : MonoBehaviour {
 		generateJungle ();
 		int count = 0;
 		while (count < 10) {
-		prey = Instantiate (preyPrefab) as Prey;
+			prey = Instantiate (preyPrefab) as Prey;
 			count = count + 1;
 		}
 
