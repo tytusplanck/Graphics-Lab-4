@@ -29,5 +29,12 @@ public class Prey : MonoBehaviour {
 			rb.MovePosition(transform.forward * thrust * -1f);
 		}
 	}
+
+	void FixedUpdate() {
+		Vector3 newPos = new Vector3(10.0f, 0.0f, 3.0f);
+		float speed = 25.0f;
+		Vector3 direction = (newPos - transform.position).normalized;
+		rb.MovePosition(transform.position + direction * speed * Time.fixedDeltaTime);
+	}
 		
 }
