@@ -13,12 +13,21 @@ public class Manager : MonoBehaviour {
 	public int jungleHeight;
 	public int jungleWidth;
 
+	public Goal goalPrefab;
+	private Goal goal;
+
+	public static int addPrey = 0;
+
 	// Use this for initialization
 	void Start () {
+		goal = Instantiate (goalPrefab) as Goal;
+		goal.transform.position = new Vector3 (10, 0, 10);
+		
 		generateJungle ();
 		int count = 0;
 		while (count < 10) {
 			prey = Instantiate (preyPrefab) as Prey;
+			prey.goal = goal;
 			count = count + 1;
 		}
 
@@ -26,7 +35,11 @@ public class Manager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (addPrey > 0) {
+			prey = Instantiate (preyPrefab) as Prey;
+			prey.goal = goal;
+			addPrey = addPrey - 1;
+		}
 	}
 
 	void generateJungle(){
