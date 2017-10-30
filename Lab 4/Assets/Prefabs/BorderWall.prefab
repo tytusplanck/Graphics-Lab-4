@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4985567398856026}
   - component: {fileID: 114127943855700544}
   - component: {fileID: 54885373970627246}
+  - component: {fileID: 65900479767991622}
   m_Layer: 0
   m_Name: BorderWall
   m_TagString: Untagged
@@ -121,7 +122,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -133,6 +134,18 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1867647600563128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65900479767991622
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578336437975540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

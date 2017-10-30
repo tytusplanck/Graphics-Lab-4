@@ -11,6 +11,7 @@ public class Prey : MonoBehaviour {
 	int flag = 0;
 	float maxDist = 10f;
 	public Goal goal;
+	GameObject[] preds = new GameObject[2];
 
 
 	// Use this for initialization
@@ -35,13 +36,23 @@ public class Prey : MonoBehaviour {
 
 	void FixedUpdate() {
 
-		if ((transform.position - goal.transform.position).magnitude < 2.5f) {
-			Destroy (gameObject);
-			Manager.addPrey = Manager.addPrey + 1;
+		if ((transform.position - goal.transform.position).magnitude < 3.0f) {
+			//Destroy (gameObject);
+			//Manager.addPrey = Manager.addPrey + 1;
+			transform.position = new Vector3(Random.Range(-25, 25), 0, Random.Range(-25, 25));
+			//rb.MovePosition(new Vector3(Random.Range(-19, 19), 0, Random.Range(-19, 19)));
 		}
 
-
-		if (transform.position.x > 19 || transform.position.x < -19) {
+		preds = findPredators ();
+		//print (preds [0]);
+		//print (preds [1]);
+		if ((preds [0].transform.position - transform.position).magnitude < 2.0f) {
+			transform.position = new Vector3 (Random.Range (-10, 0), 0, Random.Range (-10, 0));
+		}
+		if ((preds [1].transform.position - transform.position).magnitude < 2.0f) {
+			transform.position = new Vector3(Random.Range(-10, 0), 0, Random.Range(-10, 0));
+		} 
+		if (transform.position.x > 19 || transform.position.x < -19 || transform.position.y > 19 || transform.position.y < -19) {
 			rb.MovePosition(transform.forward * thrust * -1f);
 		}
 
@@ -60,10 +71,26 @@ public class Prey : MonoBehaviour {
 	private Vector3 determineDirection(Vector3 currentPos, Vector3 targetPos) {
 		if ((targetPos - currentPos).magnitude < maxDist) {
 			return goal.transform.position - currentPos;
+		} else if ((preds [0].transform.position - transform.position).magnitude < 4.0f) {
+			Vector3 flee = new Vector3 (preds [0].transform.position.x * -1, 0, preds [0].transform.position.z * -1);
+			print ("Fleeing pred 0");
+			return flee - currentPos;
+		} else if ((preds [1].transform.position - transform.position).magnitude < 4.0f) {
+			Vector3 flee = new Vector3 (preds [1].transform.position.x * -1, 0, preds [1].transform.position.z * -1);
+			print ("fleeing predator 1");
+			return flee - currentPos;
 		} else {
 			Vector3 rand = new Vector3 (Random.Range (-20, 20), 0, Random.Range (-20, 20));
 			return rand - currentPos;
 		}
+	}
+
+	private GameObject[] findPredators() {
+		GameObject[] predArray;
+		predArray = new GameObject[2];
+		predArray [0] = GameObject.Find ("predator0");
+		predArray [1] = GameObject.Find ("predator1");
+		return predArray;
 	}
 		
 }
